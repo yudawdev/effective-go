@@ -87,3 +87,41 @@ func forString() {
 		fmt.Printf("index: %d, s as rune: %U, s as character: '%c'\n", i, s, s)
 	}
 }
+
+// Go 中可以多重赋值, 而 Java 中不能直接像这样转换变量： a[i], a[j] = a[j], a[i], 需要通过中间变量进行, string 零值为 ""
+// edcba
+func forMultiVariable() {
+	a := make([]string, 10)
+	a[0] = "a"
+	a[1] = "b"
+	a[2] = "c"
+	a[3] = "d"
+	a[4] = "e"
+
+	for i, j := 0, len(a)-1; i < j; i, j = i+1, j-1 {
+		a[i], a[j] = a[j], a[i]
+	}
+
+	for _, v := range a {
+		fmt.Printf("%s", v)
+	}
+}
+
+// int 零值 0
+// 0000043210
+func forMultiVariable2() {
+	a := make([]int8, 10)
+	a[0] = 0
+	a[1] = 1
+	a[2] = 2
+	a[3] = 3
+	a[4] = 4
+
+	for i, j := 0, len(a)-1; i < j; i, j = i+1, j-1 {
+		a[i], a[j] = a[j], a[i]
+	}
+
+	for _, v := range a {
+		fmt.Printf("%d", v)
+	}
+}
