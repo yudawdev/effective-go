@@ -125,3 +125,62 @@ func forMultiVariable2() {
 		fmt.Printf("%d", v)
 	}
 }
+
+//跳出循环 - 1. 一般使用 break  2. 当遇到 switch 时，使用循环的 alias，进行 break + alias
+//current:  0
+//current:  1
+//--------------------------
+//match 0
+//match 1, break
+//match 2
+//match 4
+//--------------------------
+//match 0
+//match 1, break
+//match 2, break L
+//L done...
+
+func breakViaAliasLoop() {
+	for n := 0; n < 5; n++ {
+		if n == 2 {
+			break
+		}
+		fmt.Println("current: ", n)
+	}
+
+	fmt.Println("--------------------------")
+
+	for n := 0; n < 5; n++ {
+		switch {
+		case n == 0:
+			fmt.Println("match 0")
+		case n == 1:
+			fmt.Println("match 1, break")
+			break
+		case n == 2:
+			fmt.Println("match 2")
+		case n == 4:
+			fmt.Println("match 4")
+		}
+	}
+
+	fmt.Println("--------------------------")
+
+L:
+	for n := 0; n < 5; n++ {
+		switch {
+		case n == 0:
+			fmt.Println("match 0")
+		case n == 1:
+			fmt.Println("match 1, break")
+			break
+		case n == 2:
+			fmt.Println("match 2, break L")
+			break L
+		case n == 4:
+			fmt.Println("match 4")
+		}
+	}
+
+	fmt.Println("L done...")
+}
