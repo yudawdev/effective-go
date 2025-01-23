@@ -35,7 +35,9 @@ go/types/slice.go: 实现编译期的类型检查和类型推导
 - 逆向遍历，移动数组元素
 
 ### 常用场景
-- 判断某个对象否存在？
+
+- 判断某个对象否存在？ 使用 `slices` 包
+- 简单排序： 使用 sort 中的方法, eg: `sort.Ints(ints)`
 - 按照某个属性排序
 - 去重
 - groupBy
@@ -65,12 +67,16 @@ delete(m, "key1")
 ```
 
 ### Map 常用场景
+
 - 判断某个 key，在不在 map 中
+
 ```go
     // value 对应的值， ok 代表是有存在
 value, ok := m[key]
 
 ```
+
+- 对 map 进行排序，需要先对 key slice 排序
 
 
 
