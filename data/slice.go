@@ -248,3 +248,14 @@ func sliceSortString() {
 		fmt.Printf("index: %d, value: %s\n", index, value)
 	}
 }
+
+// 添加 slice 到 另外一个 slice
+// [1 2 3 4 5 1 2 3 4 5]
+func appendSliceToAnotherSlice() {
+	i1 := []int{1, 2, 3, 4, 5}
+	i2 := []int{1, 2, 3, 4, 5}
+
+	all := append(i1, i2...)
+
+	fmt.Println(all)
+}
