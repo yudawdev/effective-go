@@ -37,6 +37,11 @@ func (a *ArrayListStr) add3(s []string) {
 	a = &str // a 是一个局部变量，其实是外部 a 指针的复制品, 并不会改变外部 a 指针的值
 }
 
+// 最简单直接的写法
+func (a *ArrayListStr) add4(s []string) {
+	*a = append(*a, s...)
+}
+
 // *a = append(*a, s...)
 func userCase2() {
 	arr := ArrayListStr{"1", "2", "3"}
