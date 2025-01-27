@@ -31,3 +31,7 @@ case string:
 str, ok := value.(string)
 
 ```
+
+## 通用性
+1. Go 中的接口实现是隐式的
+2. 如果一个类型，和某接口定义的方法 signature 是一样的，即实现了该接口。
