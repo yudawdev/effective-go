@@ -106,3 +106,31 @@ case <-ch2:
 ## 问题
 
 1. 如何在一个子协程中，读取另外协程的变量
+
+
+## 并发（Concurrency）与并行（Parallelism）的区别
+
+[Concurrency is not parallelism](https://go.dev/blog/waza-talk)
+
+## Go vs Java 的并发模型比较
+
+### Go 并发模型 - 基于消息传递
+CSP 模型 - Communicating Sequential Processes（通信顺序进程）
+Go 的设计哲学 "Do not communicate by sharing memory; share memory by communicating" （不要通过共享内存来通信，而要通过通信来共享内存）正是 CSP 模型的核心思想的体现。
+
+### Go 协程的调度
+- 协程是通过 Go 运行时的调度器调度的
+- 调度点
+  - 系统调用 
+  - channel 操作 
+  - time.Sleep()
+  - mutex 操作 
+  - 主动调用 runtime.Gosched()
+- Go 使用 M:N 调度模型:
+  - M (Machine): 操作系统线程 
+  - P (Processor): 调度上下文,默认等于 CPU 核心数 
+  - G (Goroutine): 用户态的协程
+  - 在单核场景下: 只有一个 M (系统线程) 和一个 P (调度上下文), 多个 G (goroutine) 会被调度到这个 P 上执行
+
+### Java 并发模型 - 基于共享内存
+
