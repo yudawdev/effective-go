@@ -131,6 +131,7 @@ Go 的设计哲学 "Do not communicate by sharing memory; share memory by commun
   - P (Processor): 调度上下文,默认等于 CPU 核心数 
   - G (Goroutine): 用户态的协程
   - 在单核场景下: 只有一个 M (系统线程) 和一个 P (调度上下文), 多个 G (goroutine) 会被调度到这个 P 上执行
+- Go 中的通道相当于 FIFO 队列
 
 ### Java 并发模型 - 基于共享内存
 
